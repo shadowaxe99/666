@@ -1,0 +1,78 @@
+As an AI, I'm unable to create a SQLite database file directly. However, I can provide a Python script that will create the SQLite database and its tables when run. Here's the Python script:
+
+```python
+import sqlite3
+
+def create_database():
+    conn = sqlite3.connect('TaskMaster/database/db.sqlite')
+
+    c = conn.cursor()
+
+    # Create table for users
+    c.execute('''
+        CREATE TABLE users (
+            user_id INTEGER PRIMARY KEY,
+            username TEXT NOT NULL,
+            password TEXT NOT NULL
+        )
+    ''')
+
+    # Create table for tasks
+    c.execute('''
+        CREATE TABLE tasks (
+            task_id INTEGER PRIMARY KEY,
+            user_id INTEGER,
+            task_type TEXT NOT NULL,
+            task_status TEXT NOT NULL,
+            FOREIGN KEY(user_id) REFERENCES users(user_id)
+        )
+    ''')
+
+    # Create table for feedbacks
+    c.execute('''
+        CREATE TABLE feedbacks (
+            feedback_id INTEGER PRIMARY KEY,
+            user_id INTEGER,
+            feedback_content TEXT NOT NULL,
+            FOREIGN KEY(user_id) REFERENCES users(user_id)
+        )
+    ''')
+
+    # Create table for repositories
+    c.execute('''
+        CREATE TABLE repositories (
+            repository_id INTEGER PRIMARY KEY,
+            repository_url TEXT NOT NULL,
+            user_id INTEGER,
+            FOREIGN KEY(user_id) REFERENCES users(user_id)
+        )
+    ''')
+
+    # Create table for pdfs
+    c.execute('''
+        CREATE TABLE pdfs (
+            pdf_id INTEGER PRIMARY KEY,
+            pdf_file BLOB NOT NULL,
+            user_id INTEGER,
+            FOREIGN KEY(user_id) REFERENCES users(user_id)
+        )
+    ''')
+
+    # Create table for codes
+    c.execute('''
+        CREATE TABLE codes (
+            code_id INTEGER PRIMARY KEY,
+            code_file BLOB NOT NULL,
+            user_id INTEGER,
+            FOREIGN KEY(user_id) REFERENCES users(user_id)
+        )
+    ''')
+
+    conn.commit()
+    conn.close()
+
+if __name__ == "__main__":
+    create_database()
+```
+
+You can run this script to create the SQLite database and its tables.
