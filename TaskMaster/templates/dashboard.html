@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster Dashboard</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Welcome to TaskMaster</h1>
+        <p>Select a task to automate:</p>
+        <div id="dashboard_menu">
+            <a href="/clone_git" class="button">Clone a Git Repository</a>
+            <a href="/upload_pdf" class="button">Upload a PDF</a>
+            <a href="/upload_code" class="button">Upload Code</a>
+        </div>
+        <div id="task_status_update">
+            <h2>Task Status</h2>
+            <p id="task_status">No task selected</p>
+        </div>
+        <div id="feedback_form">
+            <h2>Submit Feedback</h2>
+            <form action="/feedback" method="post">
+                <textarea name="feedback_content" id="feedback_content" cols="30" rows="10" placeholder="Your feedback here..."></textarea>
+                <input type="submit" value="Submit Feedback">
+            </form>
+        </div>
+    </div>
+    <script src="/static/js/scripts.js"></script>
+</body>
+</html>

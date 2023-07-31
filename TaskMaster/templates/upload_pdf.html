@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload PDF - TaskMaster</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="/static/js/scripts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload PDF</h1>
+        <form id="upload_pdf_form" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="pdf_file">Select PDF:</label>
+                <input type="file" id="pdf_file" name="pdf_file" accept=".pdf" required>
+            </div>
+            <button type="submit" class="button">Upload</button>
+        </form>
+        <div id="task_status_update" class="status"></div>
+    </div>
+    <script>
+        document.getElementById('upload_pdf_form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            submitForm('upload_pdf_form', '/upload_pdf');
+        });
+    </script>
+</body>
+</html>
